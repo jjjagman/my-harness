@@ -1,0 +1,9 @@
+# Local run state, approval records, and generated artifacts
+harness/artifacts/
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db

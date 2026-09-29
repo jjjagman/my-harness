@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "minimumReferences": 1,
+  "patternSources": 2,
+  "maxRetries": 2,
+  "requiredScreens": [
+    "record-list",
+    "record-create",
+    "record-detail",
+    "taste-analysis",
+    "field-settings"
+  ],
+  "tokens": {
+    "color": [
+      "#6F8F68",
+      "#FFF9ED",
+      "#FFFFFF",
+      "#292722",
+      "#777168",
+      "#E9E1D4",
+      "#DCE8D5",
+      "#E9A15B",
+      "#91BFD0",
+      "#E9A6A6"
+    ],
+    "spacing": [
+      4,
+      8,
+      12,
+      16,
+      24,
+      32
+    ],
+    "radius": [
+      8,
+      12,
+      16,
+      "full"
+    ],
+    "fontFamily": [
+      "Pretendard"
+    ],
+    "fontSize": [
+      24,
+      20,
+      17,
+      15,
+      13,
+      12
+    ]
+  },
+  "unresolved": [
+    "기본 향미 분류와 맛·질감 평가 방식",
+    "항목별 분석에 필요한 데이터와 충분성 기준",
+    "최초에 표시할 항목과 기본 순서"
+  ],
+  "rules": [
+    {
+      "id": "service-required",
+      "source": "docs/story-service.md: 어기면 안 되는 것 1"
+    },
+    {
+      "id": "tokens",
+      "source": "docs/design.md: Colors, Typography, Layout & Shapes"
+    },
+    {
+      "id": "gates",
+      "source": "harness/r5-gates.md"
+    },
+    {
+      "id": "screens",
+      "source": "docs/prd.md: 5개 핵심 화면"
+    }
+  ]
+}

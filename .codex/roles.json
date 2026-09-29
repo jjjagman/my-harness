@@ -1,0 +1,8 @@
+{
+  "references": {"gateBefore": null, "task": "UIBowl 레퍼런스를 조사하고 출처 URL, 참고 이유, 서로 다른 출처 2개 이상의 공통 패턴을 정리한다. 접근하지 못한 출처는 만들어내지 않는다."},
+  "structure": {"gateBefore": "G1", "task": "PRD에 근거한 핵심 화면 ID, 구조, 필드 required 여부와 설정 hideable 여부를 작성한다."},
+  "rules": {"gateBefore": "G1", "task": "기준 문서에서 디자인 규칙을 도출한다. 미확정 항목은 사용자 답변 없이 제거하지 않는다."},
+  "design": {"gateBefore": "G2", "task": "지정된 Figma 파일과 페이지에 화면을 제작한다. Figma 스킬을 읽고 실제 노드, 추출 데이터, 화면 이미지를 기록한다. 대상이 없으면 보류한다."},
+  "handoff": {"gateBefore": "G3", "task": "승인된 화면과 검사 결과를 기반으로 개발자 전달 문서를 작성한다. 실제 메시지는 보내지 않는다."},
+  "judge": {"gateBefore": null, "task": "읽기 전용 판정자로 validate.mjs를 실행하고 판정과 근거를 반환한다. 쓰기 금지."}
+}
