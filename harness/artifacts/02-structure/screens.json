@@ -1,0 +1,203 @@
+{
+  "screens": [
+    {
+      "id": "record-list",
+      "name": "기록 목록",
+      "source": "docs/prd.md: 화면 1 · 기록 목록",
+      "structure": [
+        "최근 기록",
+        "차 이름 검색",
+        "차 종류 필터",
+        "새 기록"
+      ]
+    },
+    {
+      "id": "record-create",
+      "name": "차 기록 작성",
+      "source": "docs/prd.md: 화면 2 · 차 기록 작성",
+      "structure": [
+        "차 이름",
+        "선택 기록 항목",
+        "저장"
+      ]
+    },
+    {
+      "id": "record-detail",
+      "name": "기록 상세",
+      "source": "docs/prd.md: 화면 3 · 기록 상세",
+      "structure": [
+        "저장된 값과 사진",
+        "수정",
+        "삭제 확인 모달"
+      ]
+    },
+    {
+      "id": "taste-analysis",
+      "name": "내 취향 분석",
+      "source": "docs/prd.md: 화면 4 · 내 취향 분석",
+      "structure": [
+        "선호 경향 요약",
+        "분석 결과",
+        "데이터 부족 안내"
+      ]
+    },
+    {
+      "id": "field-settings",
+      "name": "기록 항목 설정",
+      "source": "docs/prd.md: 화면 5 · 기록 항목 설정",
+      "structure": [
+        "항목 표시·숨김",
+        "순서 변경",
+        "설정 저장"
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "id": "tea-name",
+      "required": true
+    },
+    {
+      "id": "tasted-at",
+      "required": false
+    },
+    {
+      "id": "tea-type",
+      "required": false
+    },
+    {
+      "id": "origin",
+      "required": false
+    },
+    {
+      "id": "tea-amount",
+      "required": false
+    },
+    {
+      "id": "water-amount",
+      "required": false
+    },
+    {
+      "id": "water-temperature",
+      "required": false
+    },
+    {
+      "id": "brew-time",
+      "required": false
+    },
+    {
+      "id": "photo",
+      "required": false
+    },
+    {
+      "id": "flavor",
+      "required": false
+    },
+    {
+      "id": "flavor-intensity",
+      "required": false
+    },
+    {
+      "id": "liking",
+      "required": false
+    },
+    {
+      "id": "sweetness",
+      "required": false
+    },
+    {
+      "id": "bitterness",
+      "required": false
+    },
+    {
+      "id": "astringency",
+      "required": false
+    },
+    {
+      "id": "umami",
+      "required": false
+    },
+    {
+      "id": "body",
+      "required": false
+    }
+  ],
+  "unresolved": [],
+  "settings": [
+    {
+      "field": "tea-name",
+      "hideable": false
+    },
+    {
+      "field": "tasted-at",
+      "hideable": true
+    },
+    {
+      "field": "tea-type",
+      "hideable": true
+    },
+    {
+      "field": "origin",
+      "hideable": true
+    },
+    {
+      "field": "tea-amount",
+      "hideable": true
+    },
+    {
+      "field": "water-amount",
+      "hideable": true
+    },
+    {
+      "field": "water-temperature",
+      "hideable": true
+    },
+    {
+      "field": "brew-time",
+      "hideable": true
+    },
+    {
+      "field": "photo",
+      "hideable": true
+    },
+    {
+      "field": "flavor",
+      "hideable": true
+    },
+    {
+      "field": "flavor-intensity",
+      "hideable": true
+    },
+    {
+      "field": "liking",
+      "hideable": true
+    },
+    {
+      "field": "sweetness",
+      "hideable": true
+    },
+    {
+      "field": "bitterness",
+      "hideable": true
+    },
+    {
+      "field": "astringency",
+      "hideable": true
+    },
+    {
+      "field": "umami",
+      "hideable": true
+    },
+    {
+      "field": "body",
+      "hideable": true
+    }
+  ],
+  "initialFields": [
+    "tea-name",
+    "tasted-at",
+    "tea-type",
+    "liking",
+    "photo"
+  ]
+}

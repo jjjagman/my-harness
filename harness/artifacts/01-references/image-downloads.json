@@ -1,0 +1,21 @@
+{
+  "status": "pass",
+  "results": [
+    {
+      "referenceId": "uibowl-rround-input",
+      "url": "https://d31var7gpnk8lm.cloudfront.net/new-79de663c-f4e6-4f56-998b-96a9b0bfa129/new-60a1a10b-4ca6-48a6-ae9e-1b43bcd64e13/9e40d2df-3cca-4dca-a593-8d5e4b33b1e4/1.png",
+      "status": "saved",
+      "file": "harness/artifacts/01-references/images/8c42253eb48404a99c3162acc266796c966dbbfe96099085cd209fb368a6bb2c.png",
+      "sha256": "8c42253eb48404a99c3162acc266796c966dbbfe96099085cd209fb368a6bb2c",
+      "bytes": 7796
+    },
+    {
+      "referenceId": "uibowl-rround-search",
+      "url": "https://d31var7gpnk8lm.cloudfront.net/new-baad8f47-7301-44a0-8728-787b3d030313/new-c84bea11-05c7-4949-9260-32478e21c34c/ab629456-d385-4be8-bf29-9be5d9dcd01d/s77.png",
+      "status": "saved",
+      "file": "harness/artifacts/01-references/images/bd81885abbb6f3b53fc2ef0971b5cbab4b69dfbf0c78b307ae622e7dcaf9a957.png",
+      "sha256": "bd81885abbb6f3b53fc2ef0971b5cbab4b69dfbf0c78b307ae622e7dcaf9a957",
+      "bytes": 116805
+    }
+  ]
+}

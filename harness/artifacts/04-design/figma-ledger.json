@@ -1,0 +1,15 @@
+{
+  "fileKey": "NEgBtr6qQA7oXLyE4bdFRq",
+  "pageId": "0:1",
+  "wrapper": "38:378",
+  "screens": {
+    "record-list": "38:379",
+    "record-create": "38:426",
+    "record-detail": "38:468",
+    "taste-analysis": "38:495",
+    "field-settings": "38:536",
+    "record-create-extra": "38:632",
+    "record-edit": "38:685",
+    "delete-confirm": "38:720"
+  }
+}

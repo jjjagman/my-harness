@@ -2,6 +2,8 @@ param(
   [Parameter(Mandatory=$true)][ValidateSet('references','structure','rules','design','handoff','judge')][string]$Role
 )
 $ErrorActionPreference = 'Stop'
+$OutputEncoding = [System.Text.UTF8Encoding]::new($false)
+[Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 $projectRoot = Split-Path -Parent $PSScriptRoot
 Push-Location -LiteralPath $projectRoot
 try {

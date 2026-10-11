@@ -1,0 +1,215 @@
+{
+  "screenId": "record-detail",
+  "fileKey": "NEgBtr6qQA7oXLyE4bdFRq",
+  "pageId": "0:1",
+  "nodeId": "38:468",
+  "properties": [
+    {
+      "kind": "color",
+      "value": "#FFFFFF",
+      "nodeIds": [
+        "38:468",
+        "38:481",
+        "38:486",
+        "38:493"
+      ]
+    },
+    {
+      "kind": "color",
+      "value": "#E5E5E5",
+      "nodeIds": [
+        "38:468",
+        "38:475",
+        "38:481",
+        "38:486"
+      ]
+    },
+    {
+      "kind": "radius",
+      "value": 24,
+      "nodeIds": [
+        "38:468",
+        "38:475",
+        "38:481",
+        "38:486"
+      ]
+    },
+    {
+      "kind": "spacing",
+      "value": 24,
+      "nodeIds": [
+        "38:468",
+        "38:468",
+        "38:468",
+        "38:468",
+        "38:468"
+      ]
+    },
+    {
+      "kind": "spacing",
+      "value": 16,
+      "nodeIds": [
+        "38:469",
+        "38:475",
+        "38:475",
+        "38:475",
+        "38:475",
+        "38:481",
+        "38:481",
+        "38:481",
+        "38:481",
+        "38:486",
+        "38:486",
+        "38:486",
+        "38:486",
+        "38:491",
+        "38:491",
+        "38:493",
+        "38:493"
+      ]
+    },
+    {
+      "kind": "color",
+      "value": "#141414",
+      "nodeIds": [
+        "38:470",
+        "38:471",
+        "38:473",
+        "38:479",
+        "38:480",
+        "38:482",
+        "38:483",
+        "38:484",
+        "38:487",
+        "38:488",
+        "I38:491;13:6",
+        "I38:493;13:8"
+      ]
+    },
+    {
+      "kind": "fontFamily",
+      "value": "Noto Sans KR",
+      "nodeIds": [
+        "38:470",
+        "38:471",
+        "38:473",
+        "38:474",
+        "38:479",
+        "38:480",
+        "38:482",
+        "38:483",
+        "38:484",
+        "38:485",
+        "38:487",
+        "38:488",
+        "38:489",
+        "38:490",
+        "I38:491;13:6",
+        "I38:493;13:8"
+      ]
+    },
+    {
+      "kind": "fontSize",
+      "value": 12,
+      "nodeIds": [
+        "38:470",
+        "38:471",
+        "38:490"
+      ]
+    },
+    {
+      "kind": "spacing",
+      "value": 8,
+      "nodeIds": [
+        "38:472"
+      ]
+    },
+    {
+      "kind": "fontSize",
+      "value": 24,
+      "nodeIds": [
+        "38:473",
+        "38:479"
+      ]
+    },
+    {
+      "kind": "color",
+      "value": "#737373",
+      "nodeIds": [
+        "38:474",
+        "38:485",
+        "38:489",
+        "38:490"
+      ]
+    },
+    {
+      "kind": "fontSize",
+      "value": 13,
+      "nodeIds": [
+        "38:474",
+        "38:480",
+        "38:489"
+      ]
+    },
+    {
+      "kind": "color",
+      "value": "#F5F5F5",
+      "nodeIds": [
+        "38:475"
+      ]
+    },
+    {
+      "kind": "spacing",
+      "value": 12,
+      "nodeIds": [
+        "38:475",
+        "38:481",
+        "38:486"
+      ]
+    },
+    {
+      "kind": "fontSize",
+      "value": 17,
+      "nodeIds": [
+        "38:482",
+        "38:487"
+      ]
+    },
+    {
+      "kind": "fontSize",
+      "value": 20,
+      "nodeIds": [
+        "38:483"
+      ]
+    },
+    {
+      "kind": "fontSize",
+      "value": 15,
+      "nodeIds": [
+        "38:484",
+        "38:485",
+        "38:488",
+        "I38:491;13:6",
+        "I38:493;13:8"
+      ]
+    },
+    {
+      "kind": "color",
+      "value": "#EEFF95",
+      "nodeIds": [
+        "38:491"
+      ]
+    },
+    {
+      "kind": "radius",
+      "value": "full",
+      "nodeIds": [
+        "38:491",
+        "38:493"
+      ]
+    }
+  ],
+  "fields": [],
+  "settings": [],
+  "extractionNotes": "Actual descendant solid fills/strokes, styled text families/sizes, positive auto-layout spacing and corner radii. Zero structural defaults omitted. Full radius means at least half short edge."
+}

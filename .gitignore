@@ -1,5 +1,13 @@
-# Local run state, approval records, and generated artifacts
-harness/artifacts/
+# Keep local state/history private; version current reviewable artifacts.
+harness/artifacts/*
+!harness/artifacts/01-references/
+!harness/artifacts/02-structure/
+!harness/artifacts/04-design/
+harness/artifacts/01-references/images/*
+!harness/artifacts/01-references/images/8c42253eb48404a99c3162acc266796c966dbbfe96099085cd209fb368a6bb2c.png
+!harness/artifacts/01-references/images/bd81885abbb6f3b53fc2ef0971b5cbab4b69dfbf0c78b307ae622e7dcaf9a957.png
+harness/artifacts/04-design/before.png
+harness/artifacts/04-design/record-create-extra.png
 node_modules/
 .env
 .env.*

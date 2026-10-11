@@ -1,0 +1,133 @@
+{
+  "fileKey": "NEgBtr6qQA7oXLyE4bdFRq",
+  "pageId": "0:1",
+  "screens": [
+    {
+      "id": "record-list",
+      "nodeId": "38:379",
+      "extraction": "harness/artifacts/04-design/record-list.json",
+      "image": "harness/artifacts/04-design/record-list.png"
+    },
+    {
+      "id": "record-create",
+      "nodeId": "38:426",
+      "extraction": "harness/artifacts/04-design/record-create.json",
+      "image": "harness/artifacts/04-design/record-create.png"
+    },
+    {
+      "id": "record-detail",
+      "nodeId": "38:468",
+      "extraction": "harness/artifacts/04-design/record-detail.json",
+      "image": "harness/artifacts/04-design/record-detail.png"
+    },
+    {
+      "id": "taste-analysis",
+      "nodeId": "38:495",
+      "extraction": "harness/artifacts/04-design/taste-analysis.json",
+      "image": "harness/artifacts/04-design/taste-analysis.png"
+    },
+    {
+      "id": "field-settings",
+      "nodeId": "38:536",
+      "extraction": "harness/artifacts/04-design/field-settings.json",
+      "image": "harness/artifacts/04-design/field-settings.png"
+    }
+  ],
+  "fields": [
+    {
+      "id": "tea-name",
+      "required": true
+    },
+    {
+      "id": "tasted-at",
+      "required": false
+    },
+    {
+      "id": "tea-type",
+      "required": false
+    },
+    {
+      "id": "liking",
+      "required": false
+    },
+    {
+      "id": "photo",
+      "required": false
+    }
+  ],
+  "settings": [
+    {
+      "field": "tea-name",
+      "hideable": false
+    },
+    {
+      "field": "tasted-at",
+      "hideable": true
+    },
+    {
+      "field": "tea-type",
+      "hideable": true
+    },
+    {
+      "field": "liking",
+      "hideable": true
+    },
+    {
+      "field": "photo",
+      "hideable": true
+    },
+    {
+      "field": "origin",
+      "hideable": true
+    },
+    {
+      "field": "tea-amount",
+      "hideable": true
+    },
+    {
+      "field": "water-amount",
+      "hideable": true
+    },
+    {
+      "field": "water-temperature",
+      "hideable": true
+    },
+    {
+      "field": "brew-time",
+      "hideable": true
+    },
+    {
+      "field": "flavor",
+      "hideable": true
+    },
+    {
+      "field": "flavor-intensity",
+      "hideable": true
+    },
+    {
+      "field": "sweetness",
+      "hideable": true
+    },
+    {
+      "field": "bitterness",
+      "hideable": true
+    },
+    {
+      "field": "astringency",
+      "hideable": true
+    },
+    {
+      "field": "umami",
+      "hideable": true
+    },
+    {
+      "field": "body",
+      "hideable": true
+    }
+  ],
+  "notes": [
+    "Editable screen mockups; no working input/save interactions claimed.",
+    "Analysis uses explicitly labelled sample insufficient-data state.",
+    "Additional optional fields, edit form and delete confirmation provided separately."
+  ]
+}

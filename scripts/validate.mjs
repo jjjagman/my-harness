@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import {safePath} from './guard-write.mjs';
 export const files={references:'harness/artifacts/01-references/references.json',structure:'harness/artifacts/02-structure/screens.json',rules:'rules/design-rules.json',design:'harness/artifacts/04-design/figma-manifest.json'};
-export function read(root,p){try{return JSON.parse(fs.readFileSync(safePath(root,p),'utf8'));}catch{return null;}}
+export function read(root,p){try{return JSON.parse(fs.readFileSync(safePath(root,p),'utf8').replace(/^\uFEFF/,''));}catch{return null;}}
 const text=x=>typeof x==='string'&&x.trim().length>0;
 const list=x=>Array.isArray(x)?x:[];
 export function validate(root,gate) {
@@ -16,6 +16,7 @@ export function validate(root,gate) {
   add('REF-COUNT',refs.length>=r.minimumReferences,1,'Reference count');
   add('REF-SOURCE',refs.every(x=>text(x.id)&&text(x.reason)&&/^https?:\/\//.test(x.url)),1,'id/url/reason required');
   add('REF-IDS',new Set(ids).size===ids.length,1,'Unique reference IDs');
+  if(r.referencePolicy){const p=r.referencePolicy;add('REF-PROVIDER',refs.every(x=>{try{return x.provider===p.provider&&x.app===p.app&&new URL(x.url).hostname===p.host&&text(x.imageId);}catch{return false;}}),1,'Configured reference provider, app, source host and MCP image ID required');}
   add('PATTERNS',patterns.length>0&&patterns.every(x=>text(x.summary)&&new Set(list(x.references)).size>=r.patternSources&&list(x.references).every(id=>ids.includes(id))),1,'Nonempty patterns with distinct existing sources');
  } else {
   add('RULE-METADATA',list(r.rules).length>0&&r.rules.every(x=>text(x.id)&&text(x.source))&&new Set(r.rules.map(x=>x.id)).size===r.rules.length,3,'Unique rules with sources');
@@ -29,14 +30,22 @@ export function validate(root,gate) {
   add('SERVICE-REQUIRED',required.length===1&&required[0]==='tea-name'&&fields.every(x=>typeof x.required==='boolean'),2,'Only tea-name required',!Array.isArray(d.fields));
   add('SERVICE-SETTINGS',fields.filter(x=>!x.required).every(x=>settings.some(s=>s.field===x.id&&s.hideable===true))&&settings.some(x=>x.field==='tea-name'&&x.hideable===false),2,'Optional fields hideable; tea-name locked',!Array.isArray(d.settings));
   if(gate==='G3') {
-   add('FIGMA-TARGET',text(d.fileKey)&&text(d.pageId),4,'Figma file/page identity',!d.fileKey||!d.pageId);
+   const target=read(root,'.codex/figma-target.json');
+   const targetMissing=!text(target?.fileKey)||!text(target?.pageId);
+   add('FIGMA-TARGET-CONFIG',!targetMissing,4,'Configured Figma file/page required',targetMissing);
+   add('FIGMA-TARGET',!targetMissing&&d.fileKey===target.fileKey&&d.pageId===target.pageId,4,'Manifest must match configured Figma file/page',targetMissing||!text(d.fileKey)||!text(d.pageId));
+   const nodeIds=screens.map(s=>s.nodeId).filter(text);
+   add('FIGMA-NODE-UNIQUE',new Set(nodeIds).size===nodeIds.length,4,'Each screen must link to a distinct Figma node');
    for(const screen of screens){
     const e=text(screen.extraction)?read(root,screen.extraction):null;
-    add('FIGMA-NODE:'+screen.id,!!e&&e.nodeId===screen.nodeId&&e.fileKey===d.fileKey&&Array.isArray(e.properties)&&e.properties.length>0,4,'Extracted node identity and properties',!e);
-    if(e) add('TOKENS:'+screen.id,list(e.properties).length>0&&list(e.properties).every(p=>Array.isArray(r.tokens[p.kind])&&r.tokens[p.kind].includes(p.value)),4,'Extracted properties match allowed tokens');
+    const identityMissing=!text(screen.nodeId)||!text(e?.nodeId)||!text(e?.fileKey)||!text(e?.pageId);
+    add('FIGMA-NODE:'+screen.id,!identityMissing&&e.nodeId===screen.nodeId&&e.fileKey===d.fileKey&&e.pageId===d.pageId,4,'Extraction must identify the manifest node, file and page',identityMissing);
+    const propertiesMissing=!Array.isArray(e?.properties)||e.properties.length===0;
+    add('EXTRACTED-PROPERTIES:'+screen.id,!propertiesMissing,4,'Nonempty extracted properties required',propertiesMissing);
+    if(!propertiesMissing) add('TOKENS:'+screen.id,e.properties.every(p=>p&&Array.isArray(r.tokens[p.kind])&&r.tokens[p.kind].includes(p.value)),4,'Extracted properties match allowed tokens');
     if(screen.id==='record-create')add('EXTRACTED-FIELDS',!!e&&JSON.stringify(e.fields)===JSON.stringify(d.fields),4,'Manifest fields match actual extraction',!e||!Array.isArray(e.fields));
     if(screen.id==='field-settings')add('EXTRACTED-SETTINGS',!!e&&JSON.stringify(e.settings)===JSON.stringify(d.settings),4,'Manifest settings match actual extraction',!e||!Array.isArray(e.settings));
-    let image=false;try{image=text(screen.image)&&fs.statSync(safePath(root,screen.image)).size>0;}catch{}
+    let image=false;try{if(text(screen.image)){const stat=fs.statSync(safePath(root,screen.image));image=stat.isFile()&&stat.size>0;}}catch{}
     add('IMAGE:'+screen.id,image,4,'Review image exists',!image);
    }
   }

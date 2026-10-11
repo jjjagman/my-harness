@@ -25,7 +25,7 @@ export class Harness {
  check(gate){let s=this.sync();const previous={G2:'G1',G3:'G2'}[gate];if(previous&&s.gates[previous]?.status!=='pass')throw Error('Previous gate not passed');const report=validate(this.root,gate);s.gates[gate]=report;s.repairRequired??={};s.repairPermits??={};s.repairRequired[gate]=report.status!=='pass';delete s.repairPermits[gate];this.save('harness/artifacts/run-state.json',s);this.save('harness/artifacts/05-review/report.json',{runId:s.id,gates:s.gates});return report;}
  retry(gate){let s=this.sync();if(!s.repairRequired?.[gate])throw Error('No failed gate');const limit=read(this.root,files.rules)?.maxRetries;if(!Number.isInteger(limit))throw Error('Missing retry limit');if((s.retries[gate]||0)>=limit)throw Error('Retry limit reached');s.retries[gate]=(s.retries[gate]||0)+1;s.repairPermits??={};s.repairPermits[gate]=true;this.save('harness/artifacts/run-state.json',s);return s;}
  digest(s){return crypto.createHash('sha256').update(JSON.stringify(s.snapshot)).digest('hex');}
- approve(hash,reviewer,items){const s=this.sync();if(s.gates.G3?.status!=='pass')throw Error('G3 not passed');if(hash!==this.digest(s))throw Error('Stale approval');if(!reviewer?.trim()||!['handdrawn','reference','readability'].every(k=>items[k]===true))throw Error('Three explicit approvals required');s.approval={hash,reviewer,items,time:new Date().toISOString()};this.save('harness/artifacts/run-state.json',s);return s;}
+ approve(hash,reviewer,items){const s=this.sync();if(s.gates.G3?.status!=='pass')throw Error('G3 not passed');if(hash!==this.digest(s))throw Error('Stale approval');if(!reviewer?.trim()||!['brand','reference','readability'].every(k=>items[k]===true))throw Error('Three explicit approvals required');s.approval={hash,reviewer,items,time:new Date().toISOString()};this.save('harness/artifacts/run-state.json',s);return s;}
  write(role,p,content){const roles=read(this.root,'.codex/roles.json');if(!roles?.[role])throw Error('Unknown role');let s=this.sync();const gate=roles[role].gateBefore;if(gate&&s.gates[gate]?.status!=='pass')throw Error('Gate blocks role');const own={references:'G1',structure:'G2',rules:'G2',design:'G3'}[role];if(own&&s.repairRequired?.[own]&&!s.repairPermits?.[own])throw Error('Reserve retry before repair');if(role==='handoff'&&s.approval?.hash!==this.digest(s))throw Error('Human approval required');const target=safePath(this.root,p);const old=fs.existsSync(target)?fs.readFileSync(target).toString('base64'):null;guardWrite(this.root,role,p,content);if(old!==null)this.save('harness/artifacts/history/'+s.id+'/'+Date.now()+'-'+crypto.randomUUID()+'-artifact.json',{path:p,encoding:'base64',content:old});return this.sync();}
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
@@ -35,12 +35,13 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
  else if(cmd==='resume'||cmd==='status'){out=h.sync();out.approvalHash=h.digest(out);}
  else if(cmd==='check')out=h.check(args[0]);
  else if(cmd==='retry')out=h.retry(args[0]);
- else if(cmd==='write'){out=h.write(args[0],args[1],fs.readFileSync(0,'utf8'));}
+ else if(cmd==='write'){out=h.write(args[0],args[1],fs.readFileSync(0,'utf8'));if(args[0]==='references'&&args[1]===files.references){const {downloadReferenceImages}=await import('./reference-images.mjs');const images=await downloadReferenceImages(h);out={...out,imageDownloads:images};}}
+ else if(cmd==='download-references'){const {downloadReferenceImages}=await import('./reference-images.mjs');out=await downloadReferenceImages(h);}
  else if(cmd==='approve'){
   if(!process.stdin.isTTY)throw Error('Human interactive terminal required');
   const {createInterface}=await import('node:readline/promises');const ui=createInterface({input:process.stdin,output:process.stdout});
-  const reviewer=await ui.question('Reviewer name: '),items={};for(const k of ['handdrawn','reference','readability'])items[k]=(await ui.question(k+' approve? type yes: '))==='yes';ui.close();out=h.approve(args[0],reviewer,items);
- }else throw Error('Commands: start | status | resume | check G1/G2/G3 | retry G1/G2/G3 | write ROLE PATH (stdin) | approve HASH');
+  const reviewer=await ui.question('Reviewer name: '),items={};for(const k of ['brand','reference','readability'])items[k]=(await ui.question(k+' approve? type yes: '))==='yes';ui.close();out=h.approve(args[0],reviewer,items);
+ }else throw Error('Commands: start | status | resume | check G1/G2/G3 | retry G1/G2/G3 | write ROLE PATH (stdin) | download-references | approve HASH');
  console.log(JSON.stringify(out,null,2));if(out.status==='fail')process.exitCode=1;if(out.status==='blocked')process.exitCode=2;
  }catch(e){console.error(e.message);process.exitCode=1;}
 }

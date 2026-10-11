@@ -1,0 +1,53 @@
+{
+  "sourcePolicy": {
+    "provider": "UIBowl MCP",
+    "app": "라운드",
+    "activeOnly": true
+  },
+  "references": [
+    {
+      "id": "uibowl-rround-input",
+      "name": "라운드 — 간편결제 / 카드 등록",
+      "url": "https://uibowl.io/name/%EB%9D%BC%EC%9A%B4%EB%93%9C?patterns=%EA%B0%84%ED%8E%B8%EA%B2%B0%EC%A0%9C&patternName=%EC%B9%B4%EB%93%9C%20%EB%93%B1%EB%A1%9D",
+      "provider": "UIBowl MCP",
+      "app": "라운드",
+      "reason": "흰 배경, 얇은 회색 입력 경계, 명확한 제목과 하단 버튼 배치를 차 기록 작성에 적용한다.",
+      "screens": [
+        "record-create",
+        "record-detail",
+        "field-settings"
+      ],
+      "imageUrls": [
+        "https://d31var7gpnk8lm.cloudfront.net/new-79de663c-f4e6-4f56-998b-96a9b0bfa129/new-60a1a10b-4ca6-48a6-ae9e-1b43bcd64e13/9e40d2df-3cca-4dca-a593-8d5e4b33b1e4/1.png"
+      ],
+      "imageId": "cmfltk2eg0003l604pgnjvoj2",
+      "visuallyReviewed": true
+    },
+    {
+      "id": "uibowl-rround-search",
+      "name": "라운드 — 검색",
+      "url": "https://uibowl.io/name/%EB%9D%BC%EC%9A%B4%EB%93%9C?patterns=%EA%B2%80%EC%83%89",
+      "provider": "UIBowl MCP",
+      "app": "라운드",
+      "reason": "흰 배경과 회색 검색창, 작은 칩에 한정한 강조색을 기록 목록과 필터에 적용한다.",
+      "screens": [
+        "record-list",
+        "taste-analysis"
+      ],
+      "imageUrls": [
+        "https://d31var7gpnk8lm.cloudfront.net/new-baad8f47-7301-44a0-8728-787b3d030313/new-c84bea11-05c7-4949-9260-32478e21c34c/ab629456-d385-4be8-bf29-9be5d9dcd01d/s77.png"
+      ],
+      "imageId": "cmfltkmxk0015l60486zlcztw",
+      "visuallyReviewed": true
+    }
+  ],
+  "patterns": [
+    {
+      "summary": "서로 다른 두 화면 흐름에서 흰 배경과 짙은 글자, 회색 입력 영역으로 정보 위계를 만든다. 같은 앱의 화면 2종이며 서로 다른 서비스 비교는 아니다.",
+      "references": [
+        "uibowl-rround-input",
+        "uibowl-rround-search"
+      ]
+    }
+  ]
+}
